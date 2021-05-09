@@ -22,7 +22,7 @@ class QuestionPostContainer extends StatelessWidget {
         padding: EdgeInsets.all(14),
         // decoration: BoxDecoration(borderRadius:),
         width: 40,
-        height: MediaQuery.of(context).size.height * 0.3,
+        height: MediaQuery.of(context).size.height * 0.35,
 
         child: Column(
           children: [

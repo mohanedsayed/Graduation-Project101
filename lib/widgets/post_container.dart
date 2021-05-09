@@ -20,6 +20,7 @@ class PostContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Container(
         decoration: BoxDecoration(
+            // gradient: LinearGradient(colors: [Colors.black, Colors.white]),
             color: Colors.white,
             boxShadow: [
               BoxShadow(color: Colors.grey[400], blurRadius: 10),
@@ -28,7 +29,7 @@ class PostContainer extends StatelessWidget {
         padding: EdgeInsets.all(14),
         // decoration: BoxDecoration(borderRadius:),
         width: 40,
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.25,
 
         child: Column(
           children: [
@@ -101,7 +102,7 @@ class PostContainer extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    modalBottomSheet(context, size);
+                    comments(context, size);
                   },
                   child: Row(
                     children: [
@@ -134,7 +135,7 @@ class PostContainer extends StatelessWidget {
     );
   }
 
-  Future modalBottomSheet(BuildContext context, Size size) {
+  Future comments(BuildContext context, Size size) {
     return showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
