@@ -152,9 +152,8 @@ class PostContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(18)),
                 // height: size.height * 0.2,
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -170,7 +169,7 @@ class PostContainer extends StatelessWidget {
                       ),
                       GestureDetector(
                         child: Text(
-                          'Add question',
+                          'Comments',
                           style:
                               TextStyle(color: Color(0xFF888888), fontSize: 18),
                         ),
@@ -190,15 +189,32 @@ class PostContainer extends StatelessWidget {
                 thickness: 2,
                 height: 10,
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextField(
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.text,
-                  decoration: new InputDecoration.collapsed(
-                      hintText: 'Add question here'),
-                ),
-              ),
+              ListView.builder(
+                  padding: EdgeInsets.all(16),
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg'),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'James jones',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                  }),
             ],
           ),
         );

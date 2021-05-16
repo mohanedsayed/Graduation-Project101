@@ -5,6 +5,7 @@ import 'package:graduation_project101/views/Chat.dart';
 import 'package:graduation_project101/views/Notifications.dart';
 import 'package:graduation_project101/views/landing_page.dart';
 import 'package:graduation_project101/views/videos_page.dart';
+import 'package:graduation_project101/widgets/navigation_drawer.dart';
 import 'package:graduation_project101/widgets/post_container.dart';
 import 'package:graduation_project101/widgets/question_post_container.dart';
 
