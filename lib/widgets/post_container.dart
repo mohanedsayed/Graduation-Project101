@@ -142,6 +142,7 @@ class PostContainer extends StatelessWidget {
       isScrollControlled: true,
       builder: (context) {
         return Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
           height: size.height * 0.9,
           width: size.width,
           decoration: BoxDecoration(
@@ -189,32 +190,102 @@ class PostContainer extends StatelessWidget {
                 thickness: 2,
                 height: 10,
               ),
-              ListView.builder(
-                  padding: EdgeInsets.all(16),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+              Expanded(
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    padding: EdgeInsets.all(16),
+                    shrinkWrap: true,
+                    itemCount: 15,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Column(
                           children: [
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg'),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg'),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'James jones',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    Text(
+                                      'Today 4:20',
+                                      style: TextStyle(color: Colors.grey[500]),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 8,
+                            Container(
+                              padding: EdgeInsets.all(12),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 12),
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(color: Colors.grey[100]),
+                              ], borderRadius: BorderRadius.circular(16)),
+                              child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor.'),
                             ),
-                            Text(
-                              'James jones',
-                              style: TextStyle(fontSize: 16),
+                            Row(
+                              // crossAxisAlignment: CrossAxisAlignment.center,
+                              // mainAxisAlignment: MainAxisAlignment.start,
+
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                GestureDetector(
+                                  onTap: () => onAgreePressed,
+                                  child: Row(
+                                    children: [
+                                      PostIcon(
+                                          icon: Icons.thumb_up_alt_outlined),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      PostInteraction(
+                                        text: 'Agree',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Row(
+                                    children: [
+                                      PostIcon(icon: Icons.reply),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      PostInteraction(
+                                        text: 'Reply',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Spacer(),
+                                PostIcon(
+                                  icon: Icons.redo_sharp,
+                                )
+                              ],
                             ),
                           ],
-                        )
-                      ],
-                    );
-                  }),
+                        ),
+                      );
+                    }),
+              ),
             ],
           ),
         );
