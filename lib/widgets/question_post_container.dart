@@ -53,6 +53,7 @@ class QuestionPostContainer extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
+                                  onTap: () => Navigator.pop(context),
                                   child: Text(
                                     'Cancel',
                                     style: TextStyle(

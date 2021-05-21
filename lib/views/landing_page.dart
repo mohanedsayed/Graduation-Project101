@@ -89,12 +89,16 @@ class _LandingPageState extends State<LandingPage> {
                       height: 250,
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DirectContact(),
-                        ),
-                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DirectContact(),
+                          ),
+                        );
+
+                        // Navigator.pop(context);
+                      },
                       child: Container(
                         height: 50,
                         width: size.width * 0.9,

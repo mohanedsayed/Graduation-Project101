@@ -125,6 +125,30 @@ class PostContainer extends StatelessWidget {
                   icon: Icons.reply_rounded,
                 ),
                 PostIcon(
+                  onPressed: () => showBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) => Column(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        Container(
+                          height: 100,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 25),
+                          width: size.width * 0.9,
+                          height: 100,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
                   icon: Icons.more_horiz,
                 ),
               ],
@@ -162,6 +186,7 @@ class PostContainer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
+                        onTap: () => Navigator.pop(context),
                         child: Text(
                           'Cancel',
                           style:

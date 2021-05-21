@@ -1,9 +1,42 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project101/api/speech_api.dart';
 
-class DirectContact extends StatelessWidget {
+class DirectContact extends StatefulWidget {
+  @override
+  _DirectContactState createState() => _DirectContactState();
+}
+
+class _DirectContactState extends State<DirectContact> {
+  bool isListening = false;
+  String text = 'Start contacting by pressing \nthe Mic button';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          toggleRecording();
+          setState(() {
+            isListening = !isListening;
+          });
+        },
+        child: AvatarGlow(
+          glowColor: Color(0xFF5224E3),
+          animate: isListening,
+          endRadius: 70,
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.white,
+            child: Icon(
+              Icons.mic,
+              color: Color(0xFF5224E3),
+              size: 45,
+            ),
+          ),
+        ),
+      ),
       backgroundColor: Color(0xFF707070),
       body: Stack(
         children: [
@@ -23,39 +56,46 @@ class DirectContact extends StatelessWidget {
             top: 350,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text(
-                'Start contacting by pressing \nthe Mic button',
-                softWrap: true,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Text(
+                  text,
+                  softWrap: true,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 28,
+                  ),
                 ),
               ),
             ),
           ),
           Positioned(
-              bottom: 50,
-              left: 70,
-              child: Icon(
-                Icons.arrow_forward_sharp,
-                size: 60,
-                color: Colors.white,
-              )),
-          Positioned(
-            bottom: 50,
-            left: 180,
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.mic,
-                color: Color(0xFF5224E3),
-                size: 45,
-              ),
-            ),
+            bottom: 70,
+            left: 70,
+            child: !isListening
+                ? Icon(
+                    Icons.arrow_forward_sharp,
+                    size: 60,
+                    color: Colors.white,
+                  )
+                : Container(),
           ),
         ],
       ),
     );
   }
+
+  Future toggleRecording() => SpeechApi.toggleRecording(
+        onResult: (text) => setState(() => this.text = text),
+        onListening: (isListening) {
+          setState(() => this.isListening = isListening);
+
+          if (!isListening) {
+            Future.delayed(Duration(seconds: 1), () {
+              // Utils.scanText(text);
+            });
+          }
+        },
+      );
 }
