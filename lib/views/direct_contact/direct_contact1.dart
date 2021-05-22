@@ -91,11 +91,11 @@ class _DirectContactState extends State<DirectContact> {
         onListening: (isListening) {
           setState(() => this.isListening = isListening);
 
-          if (!isListening) {
-            Future.delayed(Duration(seconds: 1), () {
-              // Utils.scanText(text);
-            });
-          }
+          // if (!isListening) {
+          //   Future.delayed(Duration(seconds: 1), () {
+          //     // Utils.scanText(text);
+          //   });
+          // }
         },
       );
 }

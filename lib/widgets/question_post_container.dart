@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project101/widgets/post_icon.dart';
 import 'package:graduation_project101/widgets/post_interaction.dart';
+import 'package:graduation_project101/widgets/threeDots_container.dart';
+
+import 'comment_container.dart';
+import 'threeDots_question_container.dart';
 
 class QuestionPostContainer extends StatelessWidget {
+  final Function onAgreePressed;
+  final Function onSharePressed;
   const QuestionPostContainer({
     Key key,
+    this.onAgreePressed,
+    this.onSharePressed,
   }) : super(key: key);
 
   @override
@@ -190,11 +198,30 @@ class QuestionPostContainer extends StatelessWidget {
                 PostInteraction(
                   text: 'Share',
                 ),
-                PostIcon(
-                  icon: Icons.comment_rounded,
-                ),
-                PostInteraction(
-                  text: 'Comment',
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) {
+                        return CommentContainer(onAgreePressed: onAgreePressed);
+                      },
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      PostIcon(
+                        icon: Icons.comment_rounded,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      PostInteraction(
+                        text: 'Comment',
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   width: 40,
@@ -202,8 +229,15 @@ class QuestionPostContainer extends StatelessWidget {
                 PostIcon(
                   icon: Icons.reply_rounded,
                 ),
-                PostIcon(
-                  icon: Icons.more_horiz,
+                GestureDetector(
+                  onTap: () => showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) => QuestionThreeDots(),
+                  ),
+                  child: PostIcon(
+                    icon: Icons.more_horiz,
+                  ),
                 ),
               ],
             ),
