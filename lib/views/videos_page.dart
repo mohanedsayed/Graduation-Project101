@@ -21,7 +21,13 @@ class VideosPage extends StatelessWidget {
               ),
             ],
           ),
-          Container(child: VideoContainer()),
+          Container(
+              height: 200,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return VideoContainer();
+                  })),
         ],
       ),
     );
