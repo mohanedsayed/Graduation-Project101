@@ -54,6 +54,7 @@ class VideosPage extends StatelessWidget {
             child: ListView.builder(
               padding: EdgeInsets.only(left: 5),
               scrollDirection: Axis.vertical,
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return Center(
                   child: VideoThumbnail(
