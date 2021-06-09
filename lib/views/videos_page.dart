@@ -29,6 +29,7 @@ class VideosPage extends StatelessWidget {
             height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return VideoContainer(
                   height1: 140,
