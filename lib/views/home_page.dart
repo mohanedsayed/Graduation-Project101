@@ -44,15 +44,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               size: 33,
             ),
             Icon(
-              Icons.mic_none,
+              Icons.textsms_rounded,
               size: 33,
             ),
             Icon(
-              Icons.videocam_outlined,
+              Icons.videocam_sharp,
               size: 33,
             ),
             Icon(
-              Icons.notifications_active_outlined,
+              Icons.notifications,
               size: 33,
             ),
           ],

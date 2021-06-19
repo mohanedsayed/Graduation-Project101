@@ -15,7 +15,7 @@ class ThreeDots extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(16)),
-          padding: EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(horizontal: 15),
           height: 120,
           width: size.width * 0.95,
           child: Column(
@@ -60,7 +60,7 @@ class ThreeDots extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 30,
+          height: 20,
         ),
         Container(
           decoration: BoxDecoration(

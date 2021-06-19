@@ -14,7 +14,7 @@ class CommentContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.only(top: 10),
       height: size.height * 0.9,
       width: size.width,
       decoration: BoxDecoration(

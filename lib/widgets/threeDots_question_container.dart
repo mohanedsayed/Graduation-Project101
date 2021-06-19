@@ -15,13 +15,30 @@ class QuestionThreeDots extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(16)),
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          height: 120,
+          padding: EdgeInsets.symmetric(
+            horizontal: 15,
+          ),
+          height: 145,
           width: size.width * 0.95,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.reply,
+                    size: 30,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Answer',
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                ],
+              ),
               Row(
                 children: [
                   Icon(
@@ -34,7 +51,7 @@ class QuestionThreeDots extends StatelessWidget {
                   ),
                   Text(
                     'Bookmark',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],
               ),
@@ -50,9 +67,7 @@ class QuestionThreeDots extends StatelessWidget {
                   ),
                   Text(
                     'Report',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],
               )
@@ -60,7 +75,7 @@ class QuestionThreeDots extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 30,
+          height: 20,
         ),
         Container(
           decoration: BoxDecoration(
@@ -82,7 +97,7 @@ class QuestionThreeDots extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 40,
+          height: 20,
         ),
       ],
     );

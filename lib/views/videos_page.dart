@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project101/views/videos/video_player.dart';
 
 class VideosPage extends StatelessWidget {
   @override
@@ -32,8 +33,14 @@ class VideosPage extends StatelessWidget {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return VideoContainer(
-                  height1: 140,
+                  height1: 10,
                   width1: 200,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoPlayer(),
+                    ),
+                  ),
                 );
               },
             ),
@@ -75,8 +82,10 @@ class VideoContainer extends StatelessWidget {
   final double height1;
 
   final double width1;
+  final Function onPressed;
   const VideoContainer({
     Key key,
+    this.onPressed,
     this.height1,
     this.width1,
   }) : super(key: key);
@@ -85,68 +94,163 @@ class VideoContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Stack(
+      child: GestureDetector(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => VideoPlayer(),
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(18),
+            ),
+            boxShadow: [
+              BoxShadow(spreadRadius: 0.5, blurRadius: .5, color: Colors.grey),
+            ],
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          height: height1,
+          width: width1,
+          child: Column(
             children: [
-              Container(
-                height: height1,
-                width: width1,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 2,
-                    ),
-                  ],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-              ),
-              Container(
-                height: 0.5 * height1,
-                width: width1,
-                decoration: BoxDecoration(
+              Expanded(
+                child: Container(
+                  width: width1,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(18),
-                        topRight: Radius.circular(18)),
-                    color: Colors.red),
-              ),
-              Positioned(
-                top: 45,
-                right: 3,
-                child: Card(
-                  // borderOnForeground: false,
-                  // elevation: 2,
-                  margin: EdgeInsets.all(5),
-                  color: Colors.grey[700],
-                  child: Text(
-                    '20:30',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                      topLeft: Radius.circular(18),
+                      topRight: Radius.circular(18),
+                    ),
+                  ),
+                  child: Container(
+                    alignment: Alignment.bottomRight,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(14))),
+                      elevation: 4,
+                      margin: EdgeInsets.all(6),
+                      color: Colors.grey[700],
+                      child: Padding(
+                        padding: const EdgeInsets.all(7.0),
+                        child: Text(
+                          '20:30',
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 40,
-                left: 8,
-                child: Text(
-                  'Iron Man Suit up scene',
-                  style: TextStyle(fontSize: 16),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(18),
+                      bottomRight: Radius.circular(18),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Iron Man Suit up scene',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'John Jackson - Today, 04:30',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              Positioned(
-                bottom: 20,
-                left: 8,
-                child: Text(
-                  'John Jackson - Today, 04:30',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12),
-                ),
-              ),
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
+      //  Row(
+      //   children: [
+      //     Stack(
+      //       children: [
+      //         Container(
+      //           height: height1,
+      //           width: width1,
+      //           decoration: BoxDecoration(
+      //             boxShadow: [
+      //               BoxShadow(
+      //                 color: Colors.grey,
+      //                 blurRadius: 2,
+      //               ),
+      //             ],
+      //             color: Colors.white,
+      //             borderRadius: BorderRadius.circular(18),
+      //           ),
+      //         ),
+      //         Container(
+      //           height: 0.5 * height1,
+      //           width: width1,
+      //           decoration: BoxDecoration(
+      //               borderRadius: BorderRadius.only(
+      //                   topLeft: Radius.circular(18),
+      //                   topRight: Radius.circular(18)),
+      //               color: Colors.red),
+      //         ),
+      //         Positioned(
+      //           top: 45,
+      //           right: 3,
+      //           child: Card(
+      //             // borderOnForeground: false,
+      //             // elevation: 2,
+      //             margin: EdgeInsets.all(5),
+      //             color: Colors.grey[700],
+      //             child: Text(
+      //               '20:30',
+      //               style: TextStyle(color: Colors.white, fontSize: 12),
+      //             ),
+      //           ),
+      //         ),
+      //         Positioned(
+      //           bottom: 40,
+      //           left: 8,
+      //           child:
+      // Text(
+      //             'Iron Man Suit up scene',
+      //             style: TextStyle(fontSize: 16),
+      //           ),
+      //         ),
+      //         Positioned(
+      //           bottom: 20,
+      //           left: 8,
+      //           child:
+      // Text(
+      //             'John Jackson - Today, 04:30',
+      //             textAlign: TextAlign.center,
+      //             style: TextStyle(fontSize: 12),
+      //           ),
+      //         ),
+      //       ],
+      //     )
+      //   ],
+      // ),
     );
   }
 }
