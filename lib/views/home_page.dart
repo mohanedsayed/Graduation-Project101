@@ -1,13 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project101/views/Chat.dart';
 import 'package:graduation_project101/views/Notifications.dart';
 import 'package:graduation_project101/views/landing_page.dart';
-import 'package:graduation_project101/views/videos_page.dart';
-import 'package:graduation_project101/widgets/navigation_drawer.dart';
-import 'package:graduation_project101/widgets/post_container.dart';
-import 'package:graduation_project101/widgets/question_post_container.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -21,7 +15,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int currentIndex;
   @override
   void initState() {
-    tabController = new TabController(length: 4, vsync: this);
+    tabController = new TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -29,7 +23,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        height: MediaQuery.of(context).size.height * 0.06,
+        height: MediaQuery.of(context).size.height * 0.07,
         child: TabBar(
           labelColor: Colors.deepPurple[700],
           unselectedLabelColor: Colors.grey[400],
@@ -44,13 +38,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               size: 33,
             ),
             Icon(
-              Icons.textsms_rounded,
+              Icons.message_rounded,
               size: 33,
             ),
-            Icon(
-              Icons.videocam_sharp,
-              size: 33,
-            ),
+            // Icon(
+            //   Icons.videocam_sharp,
+            //   size: 33,
+            // ),
             Icon(
               Icons.notifications,
               size: 33,
@@ -63,7 +57,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           LandingPage(),
           ChatHome(),
-          VideosPage(),
+          // VideosPage(),
           Notifications(),
         ],
       ),

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<String>This app requires read and write permission Photo Library</String>
+	<key>NSCameraUsageDescription</key>
+	<String>This app requires read and write Camera permissions from the user</String>
+	<key>NSMicrophoneUsageDescription</key>
+	<String>This app requires get access to Microphone</String>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
