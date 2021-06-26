@@ -282,6 +282,17 @@ void getImage(ImageSource imageSource) async {
   final pickedFile = await ImagePicker().getImage(source: imageSource);
   if (pickedFile != null) {
     imagePath = pickedFile.path;
+  } else {
+    print('no image chosen or taken');
+  }
+}
+
+void getVideo(ImageSource imageSource) async {
+  final pickedFile = await ImagePicker().getVideo(source: imageSource);
+  if (pickedFile != null) {
+    imagePath = pickedFile.path;
+  } else {
+    print('no video chosen or taken');
   }
 }
 
