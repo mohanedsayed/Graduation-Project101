@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:graduation_project101/views/direct_contact/direct_contact1.dart';
+import 'package:graduation_project101/views/direct_contact/speech_to_text.dart';
+import 'package:graduation_project101/views/direct_contact/text_to_speech.dart';
 import 'package:graduation_project101/widgets/navigation_drawer.dart';
 import 'package:graduation_project101/widgets/post_container.dart';
 import 'package:graduation_project101/widgets/question_post_container.dart';
@@ -123,13 +124,17 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ),
         actions: [
-          CircleAvatar(
-            backgroundColor: Colors.deepPurple[50],
-            radius: 20,
-            child: Icon(
-              Icons.search,
-              size: 28,
-              color: Colors.purple[900],
+          GestureDetector(
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => TTSpeech())),
+            child: CircleAvatar(
+              backgroundColor: Colors.deepPurple[50],
+              radius: 20,
+              child: Icon(
+                Icons.search,
+                size: 28,
+                color: Colors.purple[900],
+              ),
             ),
           ),
           SizedBox(
@@ -185,7 +190,7 @@ class _LandingPageState extends State<LandingPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DirectContact(),
+                            builder: (context) => SpeechToText(),
                           ),
                         );
 
@@ -277,11 +282,14 @@ class ModalBottomSheet extends StatefulWidget {
   _ModalBottomSheetState createState() => _ModalBottomSheetState();
 }
 
+bool pathChosen = false;
+
 var imagePath = '';
 void getImage(ImageSource imageSource) async {
   final pickedFile = await ImagePicker().getImage(source: imageSource);
   if (pickedFile != null) {
     imagePath = pickedFile.path;
+    pathChosen = true;
   } else {
     print('no image chosen or taken');
   }
@@ -291,6 +299,7 @@ void getVideo(ImageSource imageSource) async {
   final pickedFile = await ImagePicker().getVideo(source: imageSource);
   if (pickedFile != null) {
     imagePath = pickedFile.path;
+    pathChosen = true;
   } else {
     print('no video chosen or taken');
   }
@@ -357,26 +366,39 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                   )
                 : Column(
                     children: [
+                      TextField(
+                        cursorColor: Colors.black,
+                        keyboardType: TextInputType.text,
+                        decoration: new InputDecoration.collapsed(
+                            hintText: 'Add Caption here'),
+                      ),
                       Container(
                         height: size.height * .5,
-                        child: Image.file(
-                          File(imagePath),
-                        ),
+                        child: pathChosen == false
+                            ? Center(
+                                child: Text('No image selected'),
+                              )
+                            : Image.file(
+                                File(imagePath),
+                              ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           IconButton(
+                            iconSize: 50,
                             onPressed: () {
                               getImage(ImageSource.gallery);
                             },
                             icon: Icon(Icons.photo_album),
                           ),
                           IconButton(
+                              iconSize: 50,
                               onPressed: () {
                                 getImage(ImageSource.camera);
                               },
                               icon: Icon(
-                                Icons.camera,
+                                Icons.camera_alt_rounded,
                               ))
                         ],
                       ),

@@ -2,12 +2,12 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project101/api/speech_api.dart';
 
-class DirectContact extends StatefulWidget {
+class SpeechToText extends StatefulWidget {
   @override
-  _DirectContactState createState() => _DirectContactState();
+  _SpeechToTextState createState() => _SpeechToTextState();
 }
 
-class _DirectContactState extends State<DirectContact> {
+class _SpeechToTextState extends State<SpeechToText> {
   bool isListening = false;
   String text = 'Start contacting by pressing \nthe Mic button';
 

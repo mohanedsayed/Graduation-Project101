@@ -64,8 +64,9 @@ class PostContainer extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor.'),
+            FittedBox(
+                child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')),
             Spacer(),
             Divider(
               thickness: 1.5,
