@@ -76,6 +76,7 @@ class PostContainer extends StatelessWidget {
                   ],
                 ),
               ),
+              VerticalDivider1(),
               GestureDetector(
                 onTap: () => onSharePressed,
                 child: Row(
@@ -92,6 +93,7 @@ class PostContainer extends StatelessWidget {
                   ],
                 ),
               ),
+              VerticalDivider1(),
               GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
@@ -105,9 +107,7 @@ class PostContainer extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    PostIcon(
-                      icon: Icons.comment_rounded,
-                    ),
+                    PostIcon(icon: Icons.mode_comment_outlined),
                     SizedBox(
                       width: 5,
                     ),

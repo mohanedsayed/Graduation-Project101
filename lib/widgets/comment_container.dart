@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project101/constants/colors.dart';
 import 'package:graduation_project101/widgets/post_icon.dart';
 import 'package:graduation_project101/widgets/post_interaction.dart';
 
@@ -39,8 +40,7 @@ class CommentContainer extends StatelessWidget {
                       onTap: () => Navigator.pop(context),
                       child: Text(
                         'Cancel',
-                        style:
-                            TextStyle(color: Color(0xFF5224E3), fontSize: 18),
+                        style: TextStyle(color: primaryColor, fontSize: 18),
                       ),
                     ),
                     GestureDetector(
@@ -53,8 +53,7 @@ class CommentContainer extends StatelessWidget {
                     GestureDetector(
                       child: Text(
                         'Post',
-                        style:
-                            TextStyle(color: Color(0xFF5224E3), fontSize: 18),
+                        style: TextStyle(color: primaryColor, fontSize: 18),
                       ),
                     ),
                   ],

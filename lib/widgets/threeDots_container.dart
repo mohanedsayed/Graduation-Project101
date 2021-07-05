@@ -75,7 +75,7 @@ class ThreeDots extends StatelessWidget {
                 'Cancel',
                 style: TextStyle(
                     color: Colors.red,
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.normal),
               ),
             ),

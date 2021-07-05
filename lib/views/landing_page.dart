@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:graduation_project101/constants/colors.dart';
 import 'package:graduation_project101/views/direct_contact/speech_to_text.dart';
 import 'package:graduation_project101/views/direct_contact/text_to_speech.dart';
 import 'package:graduation_project101/widgets/comment_container.dart';
@@ -41,7 +42,7 @@ class _LandingPageState extends State<LandingPage> {
           //   // ),
           // )
           SpeedDial(
-        /// both default to 16
+        // both default to 16
         // childMarginTop: 18,
         marginEnd: 18,
         marginBottom: 20,
@@ -50,7 +51,8 @@ class _LandingPageState extends State<LandingPage> {
         /// This is ignored if animatedIcon is non null
         icon: Icons.add,
         activeIcon: Icons.remove,
-        // iconTheme: IconThemeData(color: Colors.grey[50], size: 30),
+        iconTheme: IconThemeData(color: Colors.grey[50], size: 40),
+
         /// The label of the main button.
         // label: Text("Open Speed Dial"),
         /// The active label of the main button, Defaults to label if not specified.
@@ -74,7 +76,7 @@ class _LandingPageState extends State<LandingPage> {
         onClose: () => print('DIAL CLOSED'),
         tooltip: 'Post Speed Dial',
         heroTag: 'speed-dial-hero-tag',
-        backgroundColor: Colors.deepPurple[500],
+        backgroundColor: primaryColor,
         foregroundColor: Colors.white,
         elevation: 8.0,
         shape: CircleBorder(),
@@ -115,7 +117,8 @@ class _LandingPageState extends State<LandingPage> {
         backgroundColor: Colors.white,
         title: Text(
           'Home',
-          style: TextStyle(color: Colors.black, fontSize: 28),
+          style: TextStyle(
+              color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
         ),
         leading: GestureDetector(
           onTap: () => _scaffoldKey.currentState.openDrawer(),
@@ -132,12 +135,12 @@ class _LandingPageState extends State<LandingPage> {
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => TTSpeech())),
             child: CircleAvatar(
-              backgroundColor: Colors.deepPurple[50],
+              backgroundColor: iconBackgroundColor,
               radius: 20,
               child: Icon(
                 Icons.text_fields,
                 size: 28,
-                color: Colors.purple[900],
+                color: primaryColor,
               ),
             ),
           ),
@@ -226,13 +229,9 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
             child: CircleAvatar(
-              backgroundColor: Colors.deepPurple[50],
+              backgroundColor: iconBackgroundColor,
               radius: 20,
-              child: Icon(
-                Icons.mic,
-                size: 28,
-                color: Colors.purple[900],
-              ),
+              child: Icon(Icons.mic, size: 28, color: primaryColor),
             ),
           ),
           SizedBox(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:graduation_project101/constants/colors.dart';
 import 'package:graduation_project101/views/Chat.dart';
 import 'package:graduation_project101/views/Notifications.dart';
 import 'package:graduation_project101/views/landing_page.dart';
@@ -25,7 +27,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       bottomNavigationBar: Container(
         height: MediaQuery.of(context).size.height * 0.07,
         child: TabBar(
-          labelColor: Colors.deepPurple[700],
+          labelPadding: EdgeInsets.only(bottom: 10),
+          labelColor: primaryColor,
           unselectedLabelColor: Colors.grey[400],
           onTap: (value) {
             currentIndex = value;
@@ -34,11 +37,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           controller: tabController,
           tabs: [
             Icon(
-              Icons.home,
-              size: 33,
+              Icons.home_filled,
+              size: 40,
             ),
             Icon(
-              Icons.message_rounded,
+              FeatherIcons.messageCircle,
               size: 33,
             ),
             // Icon(
@@ -46,7 +49,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             //   size: 33,
             // ),
             Icon(
-              Icons.notifications,
+              Icons.notifications_none,
               size: 33,
             ),
           ],
