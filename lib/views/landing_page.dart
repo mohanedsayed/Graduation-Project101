@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:graduation_project101/views/direct_contact/speech_to_text.dart';
 import 'package:graduation_project101/views/direct_contact/text_to_speech.dart';
+import 'package:graduation_project101/widgets/comment_container.dart';
 import 'package:graduation_project101/widgets/navigation_drawer.dart';
 import 'package:graduation_project101/widgets/post_container.dart';
+import 'package:graduation_project101/widgets/post_icon.dart';
+import 'package:graduation_project101/widgets/post_interaction.dart';
 import 'package:graduation_project101/widgets/question_post_container.dart';
+import 'package:graduation_project101/widgets/threeDots_container.dart';
 import 'package:image_picker/image_picker.dart';
 
 class LandingPage extends StatefulWidget {
@@ -131,7 +135,7 @@ class _LandingPageState extends State<LandingPage> {
               backgroundColor: Colors.deepPurple[50],
               radius: 20,
               child: Icon(
-                Icons.search,
+                Icons.text_fields,
                 size: 28,
                 color: Colors.purple[900],
               ),
