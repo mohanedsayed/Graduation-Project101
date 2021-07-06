@@ -6,6 +6,7 @@ import 'package:graduation_project101/constants/colors.dart';
 import 'package:graduation_project101/views/direct_contact/speech_to_text.dart';
 import 'package:graduation_project101/views/direct_contact/text_to_speech.dart';
 import 'package:graduation_project101/widgets/comment_container.dart';
+import 'package:graduation_project101/widgets/createPost.dart';
 import 'package:graduation_project101/widgets/navigation_drawer.dart';
 import 'package:graduation_project101/widgets/post_container.dart';
 import 'package:graduation_project101/widgets/post_icon.dart';
@@ -89,7 +90,8 @@ class _LandingPageState extends State<LandingPage> {
             backgroundColor: Colors.red,
             label: 'Post',
             labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => modalBottomSheet(context, 'Post', false),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => CreatePost())),
             onLongPress: () => print('FIRST CHILD LONG PRESS'),
           ),
           SpeedDialChild(
