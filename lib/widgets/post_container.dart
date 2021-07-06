@@ -9,6 +9,7 @@ import 'comment_container.dart';
 class PostContainer extends StatelessWidget {
   final Function onAgreePressed;
   final Function onSharePressed;
+  final bool hidden = false;
 
   const PostContainer({
     Key key,

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ThreeDots extends StatelessWidget {
+  final Function hide;
+  final bool hidden = false;
   const ThreeDots({
     Key key,
+    this.hide,
   }) : super(key: key);
 
   @override
@@ -22,21 +25,26 @@ class ThreeDots extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.bookmark_border,
-                    size: 30,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    'Bookmark',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
+              GestureDetector(
+                onTap: () {
+                  hide;
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.not_interested_sharp,
+                      size: 30,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Hide',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
               ),
               Row(
                 children: [
