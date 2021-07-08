@@ -17,28 +17,39 @@ class CreatePost extends StatefulWidget {
 
 bool pathChosen = false;
 
-var imagePath = '';
-void getImage(ImageSource imageSource) async {
-  final pickedFile = await ImagePicker().getImage(source: imageSource);
-  if (pickedFile != null) {
-    imagePath = pickedFile.path;
-    pathChosen = true;
-  } else {
-    print('no image chosen or taken');
-  }
-}
-
-void getVideo(ImageSource imageSource) async {
-  final pickedFile = await ImagePicker().getVideo(source: imageSource);
-  if (pickedFile != null) {
-    imagePath = pickedFile.path;
-    pathChosen = true;
-  } else {
-    print('no video chosen or taken');
-  }
-}
+var imagePath;
 
 class _CreatePostState extends State<CreatePost> {
+  @override
+  void initState() {
+    imagePath = '';
+    super.initState();
+  }
+
+  void getImage(ImageSource imageSource) async {
+    final pickedFile = await ImagePicker().getImage(source: imageSource);
+    if (pickedFile != null) {
+      setState(() {
+        imagePath = pickedFile.path;
+        pathChosen = true;
+      });
+    } else {
+      print('no image chosen or taken');
+    }
+  }
+
+  void getVideo(ImageSource imageSource) async {
+    final pickedFile = await ImagePicker().getVideo(source: imageSource);
+    if (pickedFile != null) {
+      setState(() {
+        imagePath = pickedFile.path;
+        pathChosen = true;
+      });
+    } else {
+      print('no video chosen or taken');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -88,16 +99,7 @@ class _CreatePostState extends State<CreatePost> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child:
-                      // widget.video == false
-                      // ? TextField(
-                      //     cursorColor: Colors.black,
-                      //     keyboardType: TextInputType.text,
-                      //     decoration: new InputDecoration.collapsed(
-                      //         hintText: 'Add question here'),
-                      //   )
-                      // :
-                      Column(
+                  child: Column(
                     children: [
                       TextField(
                         style: TextStyle(color: fadedTextColor),
@@ -127,99 +129,68 @@ class _CreatePostState extends State<CreatePost> {
                               // barrierColor: Colors.transparent,
                               backgroundColor: Colors.transparent,
                               context: context,
-                              builder: (context) => Column(
-                                children: [
-                                  // Spacer(),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 15),
-                                    height: 120,
-                                    width: size.width * 0.95,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () =>
-                                              getImage(ImageSource.gallery),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.photo,
-                                                size: 30,
-                                                color: Colors.grey,
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                'Gallery',
-                                                style: TextStyle(fontSize: 18),
-                                              ),
-                                            ],
+                              builder: (context) => Container(
+                                margin: EdgeInsets.only(
+                                    bottom: 100, left: 20, right: 20, top: 150),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16)),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        getImage(ImageSource.gallery);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.photo,
+                                            size: 30,
+                                            color: Colors.grey,
                                           ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () =>
-                                              getImage(ImageSource.camera),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.flag_outlined,
-                                                size: 30,
-                                                color: Colors.grey,
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                'Camera',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                              ),
-                                            ],
+                                          SizedBox(
+                                            width: 20,
                                           ),
-                                        )
-                                      ],
+                                          Text(
+                                            'Gallery',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  // SizedBox(
-                                  //   height: 20,
-                                  // ),
-                                  // Container(
-                                  //   decoration: BoxDecoration(
-                                  //       color: Colors.white,
-                                  //       borderRadius:
-                                  //           BorderRadius.circular(16)),
-                                  //   padding: EdgeInsets.symmetric(
-                                  //       horizontal: 25),
-                                  //   width: size.width * 0.95,
-                                  //   height: 60,
-                                  //   child: Center(
-                                  //     child: GestureDetector(
-                                  //       onTap: () => Navigator.pop(context),
-                                  //       child: Text(
-                                  //         'Cancel',
-                                  //         style: TextStyle(
-                                  //             color: Colors.red,
-                                  //             fontSize: 20,
-                                  //             fontWeight:
-                                  //                 FontWeight.normal),
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 40,
-                                  // ),
-                                ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        getImage(ImageSource.camera);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.camera_alt,
+                                            size: 30,
+                                            color: Colors.grey,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            'Camera',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             child: Container(
@@ -239,121 +210,76 @@ class _CreatePostState extends State<CreatePost> {
                                 ],
                               ),
                             ),
-                          )
-                          // Card(
-                          //   child: Row(
-                          //     children: [
-                          //       Text('Add photo'),
-                          //       IconButton(
-                          //         iconSize: 50,
-                          //         onPressed: () {
-                          //           getImage(ImageSource.gallery);
-                          //         },
-                          //         icon: Icon(Icons.photo),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                          ,
+                          ),
                           GestureDetector(
                             onTap: () => showModalBottomSheet(
                               // barrierColor: Colors.transparent,
                               backgroundColor: Colors.transparent,
                               context: context,
-                              builder: (context) => Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  // Spacer(),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 15),
-                                    height: 120,
-                                    width: size.width * 0.95,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () =>
-                                              getVideo(ImageSource.gallery),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.photo,
-                                                size: 30,
-                                                color: Colors.grey,
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                'Gallery',
-                                                style: TextStyle(fontSize: 18),
-                                              ),
-                                            ],
-                                          ),
+                              builder: (context) => Container(
+                                margin: EdgeInsets.only(
+                                    bottom: 100, left: 20, right: 20, top: 150),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16)),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        getVideo(ImageSource.gallery);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.photo,
+                                              size: 30,
+                                              color: Colors.grey,
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              'Gallery',
+                                              style: TextStyle(fontSize: 18),
+                                            ),
+                                          ],
                                         ),
-                                        GestureDetector(
-                                          onTap: () =>
-                                              getVideo(ImageSource.camera),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.flag_outlined,
-                                                size: 30,
-                                                color: Colors.grey,
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                'Camera',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                  // SizedBox(
-                                  //   height: 20,
-                                  // ),
-                                  // Container(
-                                  //   decoration: BoxDecoration(
-                                  //       color: Colors.white,
-                                  //       borderRadius:
-                                  //           BorderRadius.circular(16)),
-                                  //   padding: EdgeInsets.symmetric(
-                                  //       horizontal: 25),
-                                  //   width: size.width * 0.95,
-                                  //   height: 60,
-                                  //   child: Center(
-                                  //     child: GestureDetector(
-                                  //       onTap: () => Navigator.pop(context),
-                                  //       child: Text(
-                                  //         'Cancel',
-                                  //         style: TextStyle(
-                                  //             color: Colors.red,
-                                  //             fontSize: 20,
-                                  //             fontWeight:
-                                  //                 FontWeight.normal),
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 40,
-                                  // ),
-                                ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        getVideo(ImageSource.camera);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.camera_alt,
+                                            size: 30,
+                                            color: Colors.grey,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            'Camera',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             child: Container(

@@ -26,9 +26,7 @@ class ThreeDots extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () {
-                  hide;
-                },
+                onTap: () {},
                 child: Row(
                   children: [
                     Icon(
