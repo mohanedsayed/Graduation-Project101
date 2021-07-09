@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project101/constants/colors.dart';
+import 'package:graduation_project101/views/profile.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   @override
@@ -56,12 +57,46 @@ class DrawerContainer extends StatelessWidget {
                 ),
               ),
               Container(
-                color: Color(0xFFF9F9F9),
+                color: backgroundColor,
                 child: Column(
                   children: [
-                    DrawerTile(
-                      icon: Icons.person_outline,
-                      text: 'Profile',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Profile(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 25),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 0.1,
+                                spreadRadius: 0.2,
+                                color: Colors.grey,
+                              )
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12)),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        child: Row(
+                          children: [
+                            Icon(Icons.person_outline),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'Profile',
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     Divider(
                       thickness: 1,
@@ -102,7 +137,7 @@ class DrawerContainer extends StatelessWidget {
                     ),
                     DrawerTile(
                       text: 'Settings',
-                      icon: Icons.settings,
+                      icon: Icons.settings_outlined,
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -161,177 +196,13 @@ class DrawerContainer extends StatelessWidget {
         ),
       ],
     );
-
-    // return Container(
-    //   color: Colors.white,
-    //   child: Column(
-    //     children: [
-    //       Container(
-    //         height: MediaQuery.of(context).size.height * 0.25,
-    //         width: MediaQuery.of(context).size.width,
-    //         color: Colors.purple[900],
-    //         child: Stack(
-    //           children: [
-    //             Positioned(
-    //               top: 10.0,
-    //               left: 20.0,
-    //               child: CircleAvatar(
-    //                 backgroundImage: NetworkImage(
-    //                     'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg'),
-    //                 radius: 50,
-    //               ),
-    //             ),
-    //             Positioned(
-    //               child: Text(
-    //                 'Bill Getes',
-    //                 style: TextStyle(
-    //                     fontSize: 20.0,
-    //                     fontWeight: FontWeight.w400,
-    //                     fontStyle: FontStyle.normal),
-    //               ),
-    //               top: 125,
-    //               left: 28,
-    //             ),
-    //             Positioned(
-    //               child: Text(
-    //                 '@user123456',
-    //                 style: TextStyle(
-    //                     color: Colors.black87,
-    //                     fontSize: 15.0,
-    //                     fontWeight: FontWeight.w200,
-    //                     fontStyle: FontStyle.normal),
-    //               ),
-    //               top: 145,
-    //               left: 28,
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.person,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' Profile',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.video_settings,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' Videos',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.photo_album,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' photos',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.settings_applications,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' Settings',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.help,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' Help',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.info,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' About',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       Divider(
-    //         color: Colors.black26,
-    //       ),
-    //       Spacer(),
-    //       Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Row(
-    //           children: [
-    //             Icon(
-    //               Icons.logout,
-    //               color: Colors.black,
-    //               size: 30,
-    //             ),
-    //             Text(
-    //               ' Signout',
-    //               style: TextStyle(color: Colors.black87),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }
 
 class DrawerTile extends StatelessWidget {
   final String text;
   final IconData icon;
+
   const DrawerTile({
     Key key,
     this.text,
@@ -350,16 +221,18 @@ class DrawerTile extends StatelessWidget {
         )
       ], color: Colors.white, borderRadius: BorderRadius.circular(12)),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      child: Row(
-        children: [
-          Icon(icon),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            text,
-          )
-        ],
+      child: GestureDetector(
+        child: Row(
+          children: [
+            Icon(icon),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              text,
+            )
+          ],
+        ),
       ),
     );
   }

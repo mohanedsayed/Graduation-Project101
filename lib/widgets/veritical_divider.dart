@@ -11,7 +11,7 @@ class VerticalDivider1 extends StatelessWidget {
       height: 16,
       width: 1,
       child: Container(
-        color: Colors.grey,
+        color: Colors.grey.shade400,
       ),
     );
   }

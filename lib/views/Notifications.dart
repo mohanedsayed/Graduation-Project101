@@ -99,36 +99,31 @@ class _NotificationsState extends State<Notifications> {
           ),
         ),
         body: Container(
-          child: Image(
-            image: AssetImage("assets/users/drawerBackground.png"),
+          color: Colors.white,
+          width: media.width,
+          height: media.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ListView.builder(
+                  itemCount: chatUsers.length,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(top: 16),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return ConversationList(
+                      name: chatUsers[index].name,
+                      messageText: chatUsers[index].messageText,
+                      imageUrl: chatUsers[index].imageURL,
+                      time: chatUsers[index].time,
+                      isMessageRead: (index == 0 || index == 3) ? true : false,
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
-        //  Container(
-        //   color: Colors.white,
-        //   width: media.width,
-        //   height: media.height,
-        //   child: SingleChildScrollView(
-        //     child: Column(
-        //       children: [
-        //         ListView.builder(
-        //           itemCount: chatUsers.length,
-        //           shrinkWrap: true,
-        //           padding: EdgeInsets.only(top: 16),
-        //           physics: NeverScrollableScrollPhysics(),
-        //           itemBuilder: (context, index) {
-        //             return ConversationList(
-        //               name: chatUsers[index].name,
-        //               messageText: chatUsers[index].messageText,
-        //               imageUrl: chatUsers[index].imageURL,
-        //               time: chatUsers[index].time,
-        //               isMessageRead: (index == 0 || index == 3) ? true : false,
-        //             );
-        //           },
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ),
     );
   }

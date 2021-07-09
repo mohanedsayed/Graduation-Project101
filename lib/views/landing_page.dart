@@ -254,7 +254,7 @@ class _LandingPageState extends State<LandingPage> {
               PostContainer(),
               PostContainer(),
             ],
-            padding: EdgeInsets.only(top: 20, left: 16, right: 16),
+            // padding: EdgeInsets.only(top: 20, left: 16, right: 16),
           ),
         );
       }),

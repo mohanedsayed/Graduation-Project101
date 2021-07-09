@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project101/constants/colors.dart';
 
 class PostIcon extends StatelessWidget {
   final IconData icon;
@@ -15,7 +16,7 @@ class PostIcon extends StatelessWidget {
       onTap: onPressed,
       child: Icon(
         icon,
-        color: Colors.grey,
+        color: iconColor,
         size: 21,
       ),
     );

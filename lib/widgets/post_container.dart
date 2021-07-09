@@ -20,12 +20,12 @@ class PostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 20, left: 16, right: 16, bottom: 20),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
-            BoxShadow(color: Colors.grey[400], blurRadius: 10),
+            BoxShadow(color: Colors.grey[400], blurRadius: 18),
           ],
           borderRadius: BorderRadius.circular(8)),
       child: Column(
@@ -65,33 +65,39 @@ class PostContainer extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () => onAgreePressed,
-                child: Row(
-                  children: [
-                    PostIcon(icon: Icons.thumb_up_alt_outlined),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    PostInteraction(
-                      text: 'Agree',
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Row(
+                    children: [
+                      PostIcon(icon: Icons.thumb_up_alt_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      PostInteraction(
+                        text: 'Agree',
+                      ),
+                    ],
+                  ),
                 ),
               ),
               VerticalDivider1(),
               GestureDetector(
                 onTap: () => onSharePressed,
-                child: Row(
-                  children: [
-                    PostIcon(
-                      icon: Icons.repeat_rounded,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    PostInteraction(
-                      text: 'Share',
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    children: [
+                      PostIcon(
+                        icon: Icons.share_outlined,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      PostInteraction(
+                        text: 'Share',
+                      ),
+                    ],
+                  ),
                 ),
               ),
               VerticalDivider1(),
@@ -106,24 +112,25 @@ class PostContainer extends StatelessWidget {
                     },
                   );
                 },
-                child: Row(
-                  children: [
-                    PostIcon(icon: Icons.mode_comment_outlined),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    PostInteraction(
-                      text: 'Comment',
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    children: [
+                      PostIcon(icon: Icons.mode_comment_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      PostInteraction(
+                        text: 'Comment',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(
-                width: 40,
-              ),
-              PostIcon(
-                icon: Icons.reply_rounded,
-              ),
+              // SizedBox(
+              //   width: 40,
+              // ),
+              Spacer(),
               PostIcon(
                 onPressed: () => showModalBottomSheet(
                   backgroundColor: Colors.transparent,

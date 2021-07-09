@@ -16,69 +16,64 @@ class VideosPage extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontSize: 24),
         ),
       ),
-      body: Container(
-        child: Image(
-          image: AssetImage("assets/users/drawerBackground.png"),
-        ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Text('Uploaded'),
+              ),
+            ],
+          ),
+          Container(
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return VideoContainer(
+                  height1: 10,
+                  width1: 200,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoPlayer(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Divider(
+            height: 3,
+            thickness: 1,
+          ),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Text('Videos'),
+              ),
+            ],
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.only(left: 5),
+              scrollDirection: Axis.vertical,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Center(
+                  child: VideoThumbnail(
+                    height1: 200,
+                    width1: MediaQuery.of(context).size.width * 0.85,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
-      // body: Column(
-      //   children: [
-      //     Row(
-      //       children: [
-      //         Container(
-      //           padding: EdgeInsets.all(15),
-      //           child: Text('Uploaded'),
-      //         ),
-      //       ],
-      //     ),
-      //     Container(
-      //       height: 200,
-      //       child: ListView.builder(
-      //         scrollDirection: Axis.horizontal,
-      //         itemCount: 10,
-      //         itemBuilder: (context, index) {
-      //           return VideoContainer(
-      //             height1: 10,
-      //             width1: 200,
-      //             onPressed: () => Navigator.push(
-      //               context,
-      //               MaterialPageRoute(
-      //                 builder: (context) => VideoPlayer(),
-      //               ),
-      //             ),
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //     Divider(
-      //       height: 3,
-      //       thickness: 1,
-      //     ),
-      //     Row(
-      //       children: [
-      //         Container(
-      //           padding: EdgeInsets.all(15),
-      //           child: Text('Videos'),
-      //         ),
-      //       ],
-      //     ),
-      //     Expanded(
-      //       child: ListView.builder(
-      //         padding: EdgeInsets.only(left: 5),
-      //         scrollDirection: Axis.vertical,
-      //         itemCount: 10,
-      //         itemBuilder: (context, index) {
-      //           return Center(
-      //             child: VideoThumbnail(
-      //               height1: 200,
-      //               width1: MediaQuery.of(context).size.width * 0.85,
-      //             ),
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
