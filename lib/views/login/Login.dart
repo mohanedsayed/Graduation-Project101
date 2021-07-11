@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project101/constants/colors.dart';
+import 'package:graduation_project101/services/login.dart';
 import 'package:graduation_project101/views/home_page.dart';
 import 'package:graduation_project101/views/signup/SignUp.dart';
 
@@ -13,6 +14,20 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool check = false;
+  String _email;
+  String _password;
+  bool passvisible = true;
+
+  final TextEditingController _pass = TextEditingController();
+
+  final TextEditingController email = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    _pass.dispose();
+    email.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,7 +80,59 @@ class _LoginState extends State<Login> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Login_TFF(),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: email,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                          ),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Email is Required';
+                            }
+
+                            if (!RegExp(
+                                    r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                                .hasMatch(value)) {
+                              return 'Please enter a valid email Address';
+                            }
+
+                            return null;
+                          },
+                          onSaved: (String value) {
+                            _email = value;
+                          },
+                        ),
+                        TextFormField(
+                          controller: _pass,
+                          decoration: InputDecoration(
+                            labelText: ' Password',
+                            suffixIcon: IconButton(
+                              icon: Icon(passvisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  passvisible = !passvisible;
+                                });
+                              },
+                            ),
+                          ),
+                          obscureText: passvisible,
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Password is Required';
+                            }
+
+                            return null;
+                          },
+                          onSaved: (String value) {
+                            _password = value;
+                          },
+                        )
+                      ],
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,10 +193,11 @@ class _LoginState extends State<Login> {
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                        AuthClass().signIN(email: _email, password: _password);
+                        // Navigator.pushReplacement(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => HomePage()));
                       },
                     ),
                   ),

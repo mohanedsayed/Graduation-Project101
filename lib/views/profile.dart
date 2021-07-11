@@ -200,8 +200,10 @@ class SocialButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final EdgeInsetsGeometry padding;
+  final bool pressed;
   final Function onPressed;
   final EdgeInsetsGeometry margin;
+
   const SocialButton({
     Key key,
     this.containerColor,
@@ -211,6 +213,7 @@ class SocialButton extends StatelessWidget {
     this.margin,
     this.iconColor,
     this.onPressed,
+    this.pressed,
   }) : super(key: key);
 
   @override

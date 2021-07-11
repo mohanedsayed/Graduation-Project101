@@ -26,12 +26,18 @@ dependencies:
   carousel_slider: ^3.0.0
   flutter_svg: ^0.22.0
   flutter_tts: ^3.1.0
-  speech_to_text: ^3.2.0
+  speech_to_text: ^4.2.2
   avatar_glow: ^2.0.1
   flutter_speed_dial: ^3.0.5
   image_picker: ^0.8.0
   chewie: ^1.2.2
   flutter_feather_icons: ^2.0.0+1
+  firebase_core: ^1.3.0
+  cloud_firestore: ^2.3.0
+  firebase_messaging: ^10.0.3
+  firebase_auth: ^2.0.0
+  google_sign_in: ^5.0.4
+  flutter_facebook_auth: ^3.5.0
 
 
   # The following adds the Cupertino Icons font to your application.

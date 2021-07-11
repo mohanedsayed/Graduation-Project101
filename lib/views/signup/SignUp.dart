@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project101/constants/colors.dart';
 import 'package:graduation_project101/views/home_page.dart';
 
 class SignUp extends StatefulWidget {
@@ -141,7 +142,7 @@ class FormScreenState extends State<SignUp> {
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              color: Color(0xff1E57F3),
+              color: primaryColor,
               icon: const Icon(
                 Icons.arrow_back,
               ),
@@ -170,7 +171,7 @@ class FormScreenState extends State<SignUp> {
                     style: TextStyle(
                       fontSize: 45,
                       fontWeight: FontWeight.bold,
-                      color: Colors.purple[900],
+                      color: primaryColor,
                     ),
                   ),
                   Padding(
@@ -203,7 +204,7 @@ class FormScreenState extends State<SignUp> {
                     width: 280,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.purple[900],
+                      color: primaryColor,
                     ),
                     child: TextButton(
                       child: Text(
