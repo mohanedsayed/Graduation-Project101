@@ -5,7 +5,7 @@ import 'package:graduation_project101/views/home_page.dart';
 
 import 'views/login/Login.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
